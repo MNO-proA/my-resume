@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Michael Nana Ofosu - Resume</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #f8f9fa;
+        padding: 20px;
+      }
+
+      .resume-container {
+        max-width: 850px;
+        margin: 0 auto;
+        background: white;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 40px;
+        text-align: center;
+      }
+
+      .header h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        font-weight: 300;
+      }
+      .contact-link {
+        color: white;
+        text-decoration: none;
+        opacity: 0.9;
+        transition: opacity 0.3s ease;
+      }
+
+      .contact-link:hover {
+        opacity: 1;
+        text-decoration: underline;
+      }
+
+      .header .contact-info {
+        font-size: 1.1em;
+        opacity: 0.9;
+      }
+
+      .section {
+        margin-bottom: 35px;
+      }
+
+      .company {
+        margin-bottom: 25px;
+      }
+
+      .content {
+        padding: 40px;
+      }
+
+      .section {
+        margin-bottom: 35px;
+      }
+
+      .section-title {
+        font-size: 1.4em;
+        color: #667eea;
+        border-bottom: 2px solid #667eea;
+        padding-bottom: 5px;
+        margin-bottom: 20px;
+        font-weight: 600;
+      }
+
+      .company {
+        margin-bottom: 25px;
+      }
+
+      .company-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .company-name {
+        font-size: 1.2em;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .role {
+        font-weight: 500;
+        color: #667eea;
+        margin-bottom: 8px;
+      }
+
+      .description {
+        margin-bottom: 15px;
+        line-height: 1.7;
+      }
+
+      .features {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .features li {
+        padding: 5px 0;
+        padding-left: 20px;
+        position: relative;
+      }
+
+      .features li::before {
+        content: "▸";
+        color: #667eea;
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+      }
+
+      .education-item {
+        margin-bottom: 15px;
+      }
+
+      .institution {
+        font-weight: 600;
+        color: #333;
+      }
+
+      .course {
+        color: #667eea;
+        font-weight: 500;
+      }
+
+      .download-btn {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #667eea;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .download-btn:disabled {
+        background: #9ca3af;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .download-btn:disabled:hover {
+        background: #9ca3af;
+        transform: none;
+        box-shadow: 0 4px 12px rgba(156, 163, 175, 0.3);
+      }
+
+      .tooltip-container {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        display: inline-block;
+      }
+
+      .tooltip-text {
+        visibility: hidden;
+        width: 260px;
+        background-color: #1f2937; /* Dark gray */
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 8px 12px;
+        position: absolute;
+        z-index: 1;
+        top: 60px; /* Push it further down */
+        right: 0;
+        opacity: 0;
+        transition: opacity 0.3s;
+        font-size: 12px;
+        pointer-events: none; /* Makes sure it doesn't block button clicks */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .tooltip-container:hover .tooltip-text {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+      }
+
+      .skill-category {
+        background: #f8f9ff;
+        padding: 20px;
+        border-radius: 8px;
+        border-left: 4px solid #667eea;
+      }
+
+      .skill-category h4 {
+        color: #667eea;
+        margin-bottom: 10px;
+        font-weight: 600;
+      }
+
+      .link {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .link:hover {
+        text-decoration: underline;
+      }
+
+      @media print {
+        body {
+          background: white;
+          padding: 0;
+        }
+
+        .resume-container {
+          box-shadow: none;
+          border-radius: 0;
+        }
+
+        .download-btn {
+          display: none;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .content {
+          padding: 20px;
+        }
+
+        .header {
+          padding: 30px 20px;
+        }
+
+        .header h1 {
+          font-size: 2em;
+        }
+
+        .company-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tooltip-container">
+      <div class="tooltip-text">
+        Will disappear and appear. Wait for a minute to see generating PDF..
+      </div>
+      <button class="download-btn" id="downloadBtn">📄 Download PDF</button>
+    </div>
+
+    <div class="resume-container">
+      <div class="header">
+        <h1>Michael Nana Ofosu</h1>
+        <div class="contact-info">
+          <p>📧 michaelnanaofosuofficial@gmail.com</p>
+          <p>📱 0556056596</p>
+          <p>
+            💼
+            <a
+              href="https://www.linkedin.com/in/michael-nana-ofosu-559682251"
+              class="contact-link"
+              target="_blank"
+              >LinkedIn Profile</a
+            >
+          </p>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="section">
+          <h2 class="section-title">Professional Summary</h2>
+          <p>
+            Fullstack Developer and Product Architect specializing in DevOps,
+            cloud computing, and secure infrastructure solutions. Founder and
+            CEO of Qodexcore Technologies with expertise in building scalable,
+            privacy-focused hosting platforms. Experienced in creating
+            comprehensive software solutions with emphasis on full data control
+            and access.
+          </p>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">Experience</h2>
+
+          <div class="company">
+            <div class="company-header">
+              <div>
+                <div class="company-name">Qodexcore Technologies</div>
+                <div class="role">Founder, CEO & Lead Developer</div>
+              </div>
+            </div>
+            <div class="description">
+              Founded and registered technology company focused on developing
+              SaaS, localized hosting solutions and software infrastructure.
+              Assembled proprietary hosting platform using dedicated cloud
+              servers to provide full data control, enhanced privacy, and
+              cost-effective solutions for local businesses and government
+              sectors.
+            </div>
+            <p><strong>Key Objectives:</strong></p>
+            <ul class="features">
+              <li>
+                Establish self-controlled hosting infrastructure to prevent
+                vendor locking.
+              </li>
+              <li>
+                Develop specialized solutions for government, healthcare, and
+                banking sectors.
+              </li>
+              <li>
+                Implement comprehensive data protection and privacy measures
+                through full data control and access.
+              </li>
+              <li>
+                Create cost-effective, localized hosting solutions for
+                in-country applications.
+              </li>
+            </ul>
+          </div>
+
+          <div class="company">
+            <div class="company-header">
+              <div>
+                <div class="company-name">
+                  Rhema-Gold Consulting & Training Institute LLC
+                </div>
+                <div class="role">Lead Developer & System Architect</div>
+              </div>
+            </div>
+            <div class="description">
+              Created and maintain a comprehensive AWS-based Learning Management
+              System (LMS) for a U.S.-based training institute.
+              <a
+                href="https://www.rhemagoldinst.com"
+                target="_blank"
+                class="link"
+                >Visit Rhema-Gold</a
+              >
+            </div>
+
+            <p><strong>LMS Features Developed:</strong></p>
+            <ul class="features">
+              <li>
+                Student enrollment system integrated with main website and
+                course purchasing
+              </li>
+              <li>
+                Payment processing integration with Square Payment (US-based)
+              </li>
+              <li>
+                Installment-based payment system ($800 initial payment,
+                bi-weekly installments)
+              </li>
+              <li>Automated access control for late payment management</li>
+              <br />
+
+              <li>
+                Comprehensive admin dashboard for student, course, and payment
+                management
+              </li>
+              <li>
+                Secure course workspace with YouTube integration and download
+                prevention
+              </li>
+              <li>
+                Interactive learning features including quizzes, lesson notes,
+                and coursework uploads
+              </li>
+              <li>Many more</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">Education & Training</h2>
+          <div class="education-item">
+            <div class="institution">OpenLabs Ghana (NIIT)</div>
+            <div class="course">Full Stack Development Program</div>
+          </div>
+          <div class="education-item">
+            <div class="institution">Duke University (Coursera)</div>
+            <div class="course">Cloud Computing Specialization</div>
+            <a
+              href="https://www.coursera.org/account/accomplishments/verify/FDE9ZLGVT3FK?utm_source=link&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=course"
+              target="_blank"
+              class="link"
+              >Show Credentials</a
+            >
+          </div>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">Core Competencies</h2>
+          <div class="skills-grid">
+            <div class="skill-category">
+              <h4>Cloud & DevOps</h4>
+              <p>
+                AWS Architecture, Cloud Infrastructure, DevOps Pipeline, Server
+                Management
+              </p>
+            </div>
+            <div class="skill-category">
+              <h4>Full Stack Development</h4>
+              <p>
+                End-to-end application development, Database design, API
+                development
+              </p>
+            </div>
+            <div class="skill-category">
+              <h4>Product Architecture</h4>
+              <p>
+                System design, Software architecture, Infrastructure planning
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">Specializations</h2>
+          <p>
+            Product Architect (DevOps) for software and data solutions with
+            cloud infrastructure management expertise.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- jsPDF and html2canvas for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <script>
+      async function downloadResume() {
+        try {
+          // Hide the download button temporarily
+          const downloadBtn = document.querySelector(".download-btn");
+          downloadBtn.style.display = "none";
+
+          // Get the resume container
+          const resumeElement = document.querySelector(".resume-container");
+
+          // Configure html2canvas options for better quality
+          const canvas = await html2canvas(resumeElement, {
+            scale: 2, // Higher resolution
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: "#ffffff",
+            width: resumeElement.offsetWidth,
+            height: resumeElement.offsetHeight,
+          });
+
+          // Show the download button again
+          downloadBtn.style.display = "block";
+
+          // Create PDF
+          const { jsPDF } = window.jspdf;
+          const pdf = new jsPDF({
+            orientation: "portrait",
+            unit: "mm",
+            format: "a4",
+          });
+
+          // Calculate dimensions to fit A4
+          const imgWidth = 210; // A4 width in mm
+          const pageHeight = 297; // A4 height in mm
+          const imgHeight = (canvas.height * imgWidth) / canvas.width;
+          let heightLeft = imgHeight;
+
+          let position = 0;
+
+          // Add image to PDF
+          const imgData = canvas.toDataURL("image/png");
+          pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+          heightLeft -= pageHeight;
+
+          // Add new pages if content exceeds one page
+          while (heightLeft >= 0) {
+            position = heightLeft - imgHeight;
+            pdf.addPage();
+            pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
+          }
+
+          // Download the PDF
+          pdf.save("Michael_Nana_Ofosu_Resume.pdf");
+        } catch (error) {
+          console.error("Error generating PDF:", error);
+          alert(
+            "Error generating PDF. Please try the print option as an alternative."
+          );
+          downloadViaPrint();
+        }
+      }
+
+      function downloadViaPrint() {
+        // Fallback to print method
+        const printWindow = window.open("", "_blank");
+        const resumeContent = document.documentElement.outerHTML;
+
+        printWindow.document.write(resumeContent);
+        printWindow.document.close();
+
+        printWindow.onload = function () {
+          printWindow.print();
+          printWindow.close();
+        };
+      }
+
+      // Alternative download as HTML file
+      function downloadHTML() {
+        const resumeContent = document.documentElement.outerHTML;
+        const blob = new Blob([resumeContent], { type: "text/html" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "Michael_Nana_Ofosu_Resume.html";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }
+
+      // Add loading state to download button
+      function showLoading() {
+        const downloadBtn = document.querySelector(".download-btn");
+        const originalText = downloadBtn.innerHTML;
+        downloadBtn.innerHTML = "⏳ Generating PDF...";
+        downloadBtn.disabled = true;
+
+        setTimeout(() => {
+          downloadBtn.innerHTML = originalText;
+          downloadBtn.disabled = false;
+        }, 3000);
+      }
+
+      // Update the button click to show loading
+      document.addEventListener("DOMContentLoaded", function () {
+        const downloadBtn = document.querySelector(".download-btn");
+        downloadBtn.addEventListener("click", function () {
+          showLoading();
+          downloadResume();
+        });
+      });
+    </script>
+  </body>
+</html>
